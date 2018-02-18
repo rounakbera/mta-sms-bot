@@ -53,6 +53,7 @@ def incoming_sms():
             return_str += details_list[j].text
         if(subwayQuery in return_str):
             resp.message(return_str)
+    resp.message('More details: http://www.mta.info/status/subway/123/25315367')
 
     return str(resp)
 
