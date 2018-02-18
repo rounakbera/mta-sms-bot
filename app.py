@@ -38,7 +38,6 @@ def incoming_sms():
     # Determine the right reply for this message
     if body == '1':
         service_list = scrape_data()
-        resp.message(scrape_data()[2].findAll("img"))
         for i in service_list:
             message = Message()
             message.body = get_subway_lines(scrape_data()[i].findAll("img")) + " " + service_list[i].find("i").text
