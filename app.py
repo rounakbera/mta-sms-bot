@@ -32,7 +32,7 @@ def scrape_details_data(url):
 
 @app.route('/')
 def index():
-   return '<html><body><h1>"MTA 1,2,3 Train Service Change SMS BOT"</h1><p>This bot uses the Twilio API and data scrapes the MTA website to text the user about any service delays on either the 1, 2, or 3 train.</p></br><p><Simply text +1(646)-392-8126 with the number of the desired line (1, 2, or 3).</p></body></html>'
+   return '<html><body><h1>MTA 1, 2, 3 Train Service Change SMS bot</h1><p>This bot uses the Twilio API and data scrapes the MTA website to text the user about any service delays on either the 1, 2, or 3 train.</p><br><p><Simply text +1(646)-392-8126 with the number of the desired line (1, 2, or 3).</p></body></html>'
 
 @app.route("/sms", methods=['GET', 'POST'])
 def incoming_sms():
@@ -66,7 +66,7 @@ def get_subway_lines(tag_list):
 
 if __name__ == "__main__":
     # print(asdf[0].find("img").text)
-    # app.run(debug=True)
+    app.run(debug=True)
 
     '''
     body = str(input("what's your line you want"))
