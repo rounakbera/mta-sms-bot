@@ -43,7 +43,7 @@ def incoming_sms():
 
     # Determine the right reply for this message
     if body == '1':
-        resp.message(scrape_data())
+        resp.message("scrape_data()")
 
     return str(resp)
 
