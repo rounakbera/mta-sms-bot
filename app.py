@@ -15,12 +15,20 @@ auth_token = "f74851e59b188f810f96afaac52eabfe"
 client = Client(account_sid, auth_token)
 '''
 
-def scrape_data():
-    r = requests.get('http://www.mta.info/status/subway/123/25315367')
+def scrape_service_data(url):
+    r = requests.get(url)
     soup = BeautifulSoup(r.text, 'html.parser')
     service_list = soup.findAll("a", {"class": "plannedWorkDetailLink"})
     # print(service_list[0].find("i"))
     return service_list
+
+'''
+def scrape_details_data(url):
+    r = requests.get(url)
+    soup = BeautifulSoup(r.text, 'html.parser')
+    details = soup.findAll("b")
+    return details
+'''
 
 @app.route('/')
 def index():
@@ -37,9 +45,9 @@ def incoming_sms():
 
     # Determine the right reply for this message
     if body == '1':
-        service_list = scrape_data()
+        service_list = scrape_service_data('http://www.mta.info/status/subway/123/25315367')
         for i in range(len(service_list)):
-            resp.message(get_subway_lines(service_list[i].findAll("img")) + " " + service_list[i].find("i").text)
+            resp.message(get_subway_lines(service_list[i].findAll("img")) + " " + service_list[i].find("i").text + ": " + service_list[i].find("img").text)
 
     return str(resp)
 
@@ -49,12 +57,8 @@ def get_subway_lines(tag_list):
         return_str += tag_list[i]["alt"] + " "
     return return_str
 
-'''
-print(scrape_data()[0].find("i").text)
-print(scrape_data()[0].findAll("img"))
-print(get_subway_lines(scrape_data()[0].findAll("img")))
-'''
-
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    asdf = scrape_service_data('http://www.mta.info/status/subway/123/25315367')
+    # print(asdf[0].find("img").text)
+    # app.run(debug=True)
