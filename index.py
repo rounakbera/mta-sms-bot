@@ -28,6 +28,10 @@ def scrape_data():
     # print(service_list[0].find("i"))
     return service_list
 
+@app.route('/')
+def index():
+   return '<html><body><h1>Hello World'</h1></body></html>'
+
 @app.route("/sms", methods=['GET', 'POST'])
 def sms_reply():
     """Respond to incoming calls with a simple text message."""
