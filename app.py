@@ -32,7 +32,7 @@ def scrape_details_data(url):
 
 @app.route('/')
 def index():
-   return '<html><body><h1>MTA 1, 2, 3 Train Service Change SMS bot</h1><p>This bot uses the Twilio API and data scrapes the MTA website to text the user about any service delays on either the 1, 2, or 3 train.</p><p><Simply text +1(646)-392-8126 with the number of the desired line (1, 2, or 3).</p></body></html>'
+   return '<html><body><h1>MTA 1, 2, 3 Train Service Change SMS bot</h1><p>This bot uses the Twilio API and data scrapes the MTA website to text the user about any service delays on either the 1, 2, or 3 train.</p><p>Simply text +1(646)-392-8126 with the number of the desired line (1, 2, or 3).</p></body></html>'
 
 @app.route("/sms", methods=['GET', 'POST'])
 def incoming_sms():
