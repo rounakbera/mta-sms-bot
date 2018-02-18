@@ -48,7 +48,7 @@ def incoming_sms():
                 resp.message(return_str)
         resp.message('More details: http://www.mta.info/status/subway/123/25315367')
     else:
-        resp.message('This bot uses the Twilio API and data scrapes the MTA website to text the user about any service delays on either the 1, 2, or 3 train. Simply text +1(646)-392-8126 with the number of the desired line (1, 2, or 3). Made by Rounak Bera and Raymond Li.')
+        resp.message('This bot uses the Twilio API and data scrapes the MTA website to text the user about any service delays on either the 1, 2, or 3 train. Simply text the number of the desired line (1, 2, or 3). Made by Rounak Bera and Raymond Li.')
 
     return str(resp)
 
