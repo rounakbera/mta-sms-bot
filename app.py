@@ -39,9 +39,7 @@ def incoming_sms():
     if body == '1':
         service_list = scrape_data()
         for i in range(len(service_list)):
-            message = Message()
-            message.body = get_subway_lines(service_list[i].findAll("img")) + " " + service_list[i].find("i").text
-            resp.append(message)
+            resp.message(get_subway_lines(service_list[i].findAll("img")) + " " + service_list[i].find("i").text)
 
     return str(resp)
 
