@@ -47,7 +47,11 @@ def incoming_sms():
     if body == '1':
         service_list = scrape_service_data('http://www.mta.info/status/subway/123/25315367')
         for i in range(len(service_list)):
-            resp.message(get_subway_lines(service_list[i].findAll("img")) + " " + service_list[i].find("i").text + ": " + service_list[i].find("img").text)
+            details_list = service_list[i].findAll("b")
+            return_str = get_subway_lines(service_list[i].findAll("img"))
+            for j in range(len(details_list)):
+                return_str += details_list[j].text
+            resp.message(return_str)
 
     return str(resp)
 
@@ -59,6 +63,15 @@ def get_subway_lines(tag_list):
 
 
 if __name__ == "__main__":
-    asdf = scrape_service_data('http://www.mta.info/status/subway/123/25315367')
     # print(asdf[0].find("img").text)
-    # app.run(debug=True)
+    app.run(debug=True)
+
+    '''
+    service_list = scrape_service_data('http://www.mta.info/status/subway/123/25315367')
+    for i in range(len(service_list)):
+        details_list = service_list[i].findAll("b")
+        return_str = get_subway_lines(service_list[i].findAll("img"))
+        for j in range(len(details_list)):
+            return_str += details_list[j].text
+        print(return_str)
+    '''
